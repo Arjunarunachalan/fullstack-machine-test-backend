@@ -1,0 +1,9 @@
+[dotenv@16.6.1][DEBUG] No encoding is specified. UTF-8 is used by default
+[dotenv@16.6.1] injecting env (11) from .env
+
+[Dotenv Default Default]
+Resolved Path Expected: D:\Next js\fullstack_machinetest\apps\api\.env
+Error? Loaded successfully
+
+[Env Configuration Test]
+CWD: D:\Next js\fullstack_machinetest\apps\api

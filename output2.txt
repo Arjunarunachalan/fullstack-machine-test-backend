@@ -1,0 +1,16 @@
+[dotenv@16.6.1][DEBUG] No encoding is specified. UTF-8 is used by default
+[dotenv@16.6.1] injecting env (11) from .env
+
+[Dotenv Default Default]
+Resolved Path Expected: D:\Next js\fullstack_machinetest\apps\api\.env
+Error? Loaded successfully
+
+[Env Configuration Test]
+CWD: D:\Next js\fullstack_machinetest\apps\api
+
+[Server Config Test]
+[dotenv@16.6.1][DEBUG] No encoding is specified. UTF-8 is used by default
+[dotenv@16.6.1][DEBUG] Failed to load apps/api/.env ENOENT: no such file or directory, open 'D:\Next js\fullstack_machinetest\apps\api\apps\api\.env'
+[dotenv@16.6.1] injecting env (0) from apps\api\.env
+Resolved Path Expected (Server Code): D:\Next js\fullstack_machinetest\apps\api\apps\api\.env
+Error? ENOENT: no such file or directory, open 'D:\Next js\fullstack_machinetest\apps\api\apps\api\.env'

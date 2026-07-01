@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
@@ -29,20 +28,38 @@ jobs:
     steps:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.0
+
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script_stop: true
+
           script: |
             set -e
 
+            echo "=============================="
+            echo "Starting Backend Deployment"
+            echo "=============================="
+
             cd /home/ubuntu/fullstack-machine-test-backend
 
+            echo "Pulling latest code..."
             git pull origin main
 
+            echo "Installing dependencies..."
             npm install
 
+            echo "Building project..."
             npm run build
 
+            echo "Reloading PM2..."
             pm2 reload backend
+
+            echo "Waiting for application..."
+            sleep 5
+
+            echo "Running Health Check..."
+            curl --fail --silent --show-error http://localhost:4000/health
+
+            echo "Deployment Successful!"

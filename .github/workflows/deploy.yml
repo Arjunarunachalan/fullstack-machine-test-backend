@@ -6,7 +6,24 @@ on:
       - main
 
 jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install
+
+      - run: npm run build
+
   deploy:
+    needs: build
+
     runs-on: ubuntu-latest
 
     steps:
@@ -20,22 +37,12 @@ jobs:
           script: |
             set -e
 
-            echo "=============================="
-            echo "Starting Backend Deployment"
-            echo "=============================="
-
             cd /home/ubuntu/fullstack-machine-test-backend
 
-            echo "Pulling latest code..."
             git pull origin main
 
-            echo "Installing dependencies..."
-            npm ci
+            npm install
 
-            echo "Building project..."
             npm run build
 
-            echo "Reloading PM2..."
             pm2 reload backend
-
-            echo "Deployment Successful!"
